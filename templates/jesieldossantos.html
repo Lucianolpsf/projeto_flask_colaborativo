@@ -1,29 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Modelo de Classificação SVM</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados do Modelo de Predição de Plataforma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        pre {
+            white-space: pre-wrap; /* Garante que o texto quebre linhas */
+            word-wrap: break-word;  /* Garante que palavras longas quebrem */
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Modelo de Classificação SVM</h1>
-        <p>Resultados do modelo de classificação SVM:</p>
-        <div class="resultados">
-            <h2>Acurácia: <span id="acuracia"></span></h2>
-            <h2>Relatório de Classificação:</h2>
-            <pre id="relatorio-classificacao"></pre>
+<body class="min-h-screen bg-gradient-to-br from-blue-100 to-indigo-200 p-8 flex items-center justify-center">
+    <div class="bg-white rounded-xl shadow-2xl p-8 md:p-12 max-w-3xl w-full">
+        <h1 class="text-4xl font-extrabold text-center text-blue-800 mb-8">
+            Análise de Predição de Plataforma Social
+        </h1>
+
+        <p class="text-gray-700 text-lg mb-8 text-center">
+            Estes são os resultados de desempenho do seu modelo de Machine Learning.
+        </p>
+
+        <div class="mt-10 border-t-2 border-blue-300 pt-8">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center">Resultados do Modelo</h2>
+
+            <div class="bg-blue-50 p-6 rounded-lg mb-8 shadow-inner border border-blue-200">
+                <h3 class="text-2xl font-semibold text-blue-700 mb-4">Acurácia Geral</h3>
+                <p class="text-5xl font-extrabold text-green-600 text-center animate-pulse">
+                    {{ accuracy }} {# Isso será preenchido pelo Flask #}
+                </p>
+                <p class="text-gray-600 text-center mt-2">
+                    A proporção de previsões corretas feitas pelo modelo.
+                </p>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-lg shadow-inner border border-gray-200">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Relatório de Classificação Detalhado</h3>
+                <pre class="bg-gray-800 text-gray-100 p-6 rounded-lg text-sm overflow-x-auto whitespace-pre-wrap leading-relaxed shadow-md">
+                    {{ classification_report }} {# Isso será preenchido pelo Flask #}
+                </pre>
+                <p class="text-gray-600 mt-4 text-center">
+                    Precisão, recall e f1-score por classe, fornecendo uma visão mais profunda do desempenho.
+                </p>
+            </div>
         </div>
     </div>
-
-    <script>
-        // Simule os resultados do modelo
-        const resultados = {
-            acuracia: "0.95",
-            relatorioClassificacao: "precision    recall  f1-score   support\n\n           0       0.96      0.95      0.95      1000\n           1       0.94      0.96      0.95      1000\n\n    accuracy                           0.95      2000\n   macro avg       0.95      0.95      0.95      2000\nweighted avg       0.95      0.95      0.95      2000"
-        };
-
-        // Atualize a página com os resultados
-        document.getElementById("acuracia").innerHTML = resultados.acuracia;
-        document.getElementById("relatorio-classificacao").innerHTML = resultados.relatorioClassificacao;
-    </script>
 </body>
 </html>
